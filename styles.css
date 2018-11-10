@@ -1,0 +1,683 @@
+* {
+    -webkit-user-select: none;
+    /* Safari 3.1+ */
+    -moz-user-select: none;
+    /* Firefox 2+ */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Standard syntax */
+}
+
+:root {
+    font-size: 2vw;
+}
+
+body {
+    margin: 0;
+}
+
+#screen {
+    width: 80vw;
+    height: 45vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    position: relative;
+
+    /*  touch-action: none;*/
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/************* settings **********/
+#settings {
+    position: absolute;
+
+    left: 1vw;
+    top: 41vw;
+
+    width: 3vw;
+    height: 2.7vw;
+    background-image: url(grafik/setting.svg);
+    background-size: 100%;
+    /*background-color: rgba(0, 0, 255, 0.5);*/
+    z-index: 10000;
+
+}
+
+#settings_screen {
+    /*    margin: 0 auto;*/
+    text-align: center;
+    position: absolute;
+    width: 60vw;
+    height: 40vw;
+    background-color: rgba(35, 55, 184, 0.84);
+
+    top: 1vw;
+    left: 10vw;
+    border-radius: 2vw;
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+}
+
+#setting_close {
+    position: absolute;
+
+    left: 56vw;
+    top: 1vw;
+
+    width: 3vw;
+    height: 3vw;
+    background-image: url(grafik/Exit.svg);
+    background-size: 100%;
+}
+
+/*********** tid ***************/
+#playfield,
+#score {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Timer & Nedtælling */
+
+#tid {
+    position: absolute;
+    left: calc(30% - 5vw);
+    top: 0vw;
+    left: 6vw;
+    width: 4vw;
+    height: 1vw;
+    text-align: left;
+    font-size: 1rem;
+    font-family: sans-serif;
+    color: white;
+    z-index: ;
+
+}
+
+#timer {
+    position: absolute;
+    text-align: left;
+    left: 1vw;
+    top: 1vw;
+    font-size: 1rem;
+    font-family: sans-serif;
+    color: red;
+    z-index: 1;
+}
+
+/*TOGGLE*/
+
+#sfx_sprite,
+#music_sprite {
+    background-size: 500% 100%;
+    width: 10vw;
+    height: 10vw;
+    background-image: url(grafik/Toggle_sprite.svg);
+    display: inline-block;
+}
+
+
+#sfx h1,
+#music h1 {
+    display: inline-block;
+    font-family: broadway;
+}
+
+
+.on {
+    background-position: 0;
+    /*    background-color: green;*/
+}
+
+.off {
+    background-position: -400% 0;
+    /*    background-color: red;*/
+}
+
+
+.off_on {
+    animation-name: on_off_kf;
+    animation-direction: reverse;
+    animation-duration: 0.1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: steps(4);
+
+}
+
+.on_off {
+    animation-name: on_off_kf;
+    animation-duration: 0.1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: steps(4);
+}
+
+@keyframes on_off_kf {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -400% 0;
+    }
+}
+
+/* UI */
+#score {
+    position: absolute;
+    text-align: left;
+    left: 1vw;
+    top: 1vw;
+    width: 7vw;
+    height: 7vw;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    color: red;
+    z-index: 2;
+}
+
+#points {
+    position: absolute;
+    right: 1vw;
+    color: white;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    display: flex;
+    bottom: 4vw;
+    z-index: 1;
+}
+
+#points .stone {
+    background-image: url(UI/bananLl.svg);
+    background-size: 100%;
+    width: 2rem;
+    height: 2rem;
+    z-index: ;
+}
+
+#points .antal {
+    /*  outline: 2px solid red;*/
+    font-feature-settings: tnum;
+    width: 3rem;
+    text-align: right;
+    z-index: 1;
+}
+
+#energy {
+    position: absolute;
+    right: 2vw;
+    bottom: 0.4rem;
+    width: 6rem;
+    /*  outline: 2px solid red;*/
+    display: flex;
+    justify-content: space-between;
+    z-index: ;
+}
+
+.banan {
+    width: 2rem;
+    height: 2rem;
+    background-image: url(UI/bananLl.svg);
+    background-size: 100%;
+    z-index: 1;
+}
+
+/* ********   START   ******** */
+
+#game_background {
+    position: absolute;
+    width: 80vw;
+    height: 45vw;
+    background-image: url(scene/PlayGame-01.svg);
+    z-index: 1;
+
+}
+
+#start {
+    position: absolute;
+    width: 80vw;
+    height: 45vw;
+    background-image: url(scene/introPage.svg);
+    background-size: 100%;
+    z-index: 1;
+
+}
+
+#play {
+    position: absolute;
+    width: 9vw;
+    height: 9vw;
+    left: 34vw;
+    top: 28vw;
+    background-image: url(UI/Startsknap.svg);
+    cursor: pointer;
+    background-size: 100%;
+    z-index: ;
+
+}
+
+/************ levelcomplete ****************/
+#levelcomplete {
+    position: absolute;
+    width: 80vw;
+    height: 45vw;
+    background-image: url(scene/YouRock.svg);
+    background-size: 100%;
+    z-index: ;
+}
+
+#playAgain {
+    position: absolute;
+    width: 9vw;
+    height: 9vw;
+    left: 35vw;
+    top: 29vw;
+    background-image: url(UI/playAgain.svg);
+    cursor: crosshair;
+    background-size: 100%;
+    z-index: 1;
+}
+
+#YouRockSign {
+    position: absolute;
+    width: 60vw;
+    height: 15vw;
+    left: 10vw;
+    top: 29vw;
+    background-size: 100%;
+    background-image: url(UI/YouRockSign.svg);
+    z-index: 1;
+}
+
+/* ********   Game Over   ******** */
+
+#gameover {
+    position: absolute;
+    width: 80vw;
+    height: 45vw;
+    background-image: url(scene/GameOverO.svg);
+    background-size: 100%;
+    z-index: ;
+
+}
+
+#newGame {
+    position: absolute;
+    width: 9vw;
+    height: 9vw;
+    left: 34vw;
+    top: 13vw;
+    background-image: url(UI/NewGame.svg);
+    cursor: crosshair;
+    background-size: 100%;
+
+}
+
+#GameOverSign {
+    position: absolute;
+    width: 60vw;
+    height: 11vw;
+    left: 10vw;
+    top: 31vw;
+    background-size: 100%;
+    background-image: url(UI/GameOverSign.svg);
+}
+
+/*************Stone***********/
+
+.stone {
+    position: absolute;
+    cursor: crosshair;
+    z-index: 1;
+    width: 6vw;
+    height: 6vw;
+    background-image: url(stone.svg);
+    background-size: 100%;
+    z-index: ;
+
+
+}
+
+#stone_sprite {
+    background-size: 500% 100%;
+    width: 6vw;
+    height: 6vw;
+    background-image: url(scene/stoneDesolve.svg);
+    background-size: 100%;
+    z-index: ;
+
+
+}
+
+#stone0 {
+    /*  left: 0vw;*/
+    /*  top: 10vw;*/
+    animation-delay: .8s;
+}
+
+#stone1 {
+    /*  left: 15vw;*/
+    /*  top: 5vw;*/
+
+    animation-delay: .14s;
+}
+
+#stone2 {
+    /*  left: 35vw;*/
+    /*  top: 30vw;*/
+
+    animation-delay: .7s;
+}
+
+#stone3 {
+    /*  left: 50vw;*/
+    /*  top: 25vw;*/
+
+    animation-delay: 3s;
+}
+
+#stone4 {
+    /*  left: 50vw;*/
+    /*  top: 25vw;*/
+
+    animation-delay: 6s;
+}
+
+.pos0 {
+    left: 10vw;
+}
+
+.pos1 {
+    left: 30vw;
+}
+
+.pos2 {
+    left: 20vw;
+}
+
+.pos3 {
+    left: 60vw;
+}
+
+.pos4 {
+    left: 40vw;
+}
+
+.pos5 {
+    left: 50vw;
+}
+
+.pos6 {
+    left: 70vw;
+}
+
+/************** UI *******************/
+
+#exit {
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    right: 0.3vw;
+    top: 0vw;
+    background-image: url(UI/Exit.svg);
+    /* cursor: crosshair;
+    background-size: 100%;*/
+    background-repeat: no-repeat;
+    z-index: 100;
+}
+
+/* effekter */
+.hide {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}
+
+.blur {
+    filter: blur(5px) brightness(80%);
+
+}
+
+.grey {
+    filter: grayscale(80%);
+}
+
+.fade_out {
+    animation-name: fadeout_kf;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeout_kf {
+    0% {
+        opacity: 1oo;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.faded_out {
+    animation-name: fadeout_kf;
+    animation-duration: 9.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadedout_kf {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100;
+    }
+}
+
+.pulse {
+    animation-name: pulse_kf;
+    animation-duration: 1.7s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+}
+
+@keyframes pulse_kf {
+    0% {
+        transform: scale(1.21);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* animationer */
+.paused {
+    animation-play-state: paused;
+}
+
+
+.falling {
+    animation-name: falling_kf;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    /* sikr at vi altid er uden for skærmen, hvis animationen er delayet */
+    top: -10vw;
+}
+
+@keyframes falling_kf {
+    from {
+        top: -10vw;
+    }
+
+    to {
+        top: 60vw;
+    }
+}
+
+.dissappear {
+    animation-name: dissappear_kf;
+    animation-duration: .7s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.59, -0.56, .77, 1.34);
+    animation-fill-mode: forwards;
+}
+
+@keyframes dissappear_kf {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0);
+    }
+}
+
+.explode {
+    animation-name: explode_kf;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+}
+
+@keyframes explode_kf {
+    from {
+        transform: translate(-55vw, -55vw) scale(.1) rotate(0);
+    }
+
+    to {
+        transform: translate(-55vw, -55vw) scale(3) rotate(-30deg);
+    }
+}
+
+.shake {
+    /*  background-color: red;*/
+    width: 20vw;
+    height: 16.25vw;
+
+    animation-name: shake_kf;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes shake_kf {
+    0% {
+        background-color: transparent;
+        transform: rotate(0) scale(1);
+    }
+
+    10% {
+        background-color: rgba(255, 246, 27, 0.7);
+        transform: rotate(-5deg) scale(1.5);
+    }
+
+    50% {
+        background-color: rgba(255, 165, 0, 0.7);
+        transform: rotate(10deg) scale(1.5);
+    }
+
+    100% {
+        background-color: rgba(255, 0, 0, 0.7);
+        transform: rotate(-10deg) scale(1.5);
+    }
+}
+
+/*********** banan ***************/
+.type1 {
+    position: absolute;
+    width: 8vw;
+    height: 6.1vw;
+    background-image: url(UI/type1.svg);
+    background-size: 100%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.type2 {
+    position: absolute;
+    width: 8vw;
+    height: 6vw;
+    background-image: url(UI/type2.svg);
+    background-size: 100%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.position1 {
+    left: 66vw;
+    top: 14vw;
+    transform: skewY(9deg) rotate(190deg);
+    ;
+    ;
+}
+
+.position2 {
+    left: 7vw;
+    top: 17vw;
+    transform: skewY(20deg);
+
+}
+
+.position3 {
+    left: 71vw;
+    top: 21vw;
+
+}
+
+.position4 {
+    left: 3vw;
+    top: 10vw;
+    transform: rotate(190deg);
+}
+
+.position5 {
+    left: 65vw;
+    top: 14vw;
+    transform: rotate(160deg);
+}
+
+.position6 {
+    left: 7vw;
+    top: 15vw;
+}
+
+.position7 {
+    left: 7vw;
+    top: 16vw;
+}
+
+.position8 {
+    left: 66vw;
+    top: 14vw;
+    transform: rotate(190deg);
+}
+
+.position9 {
+    left: 2vw;
+    top: 10vw;
+    transform: rotate(190deg);
+}
+
+.position10 {
+    left: 71vw;
+    top: 20vw;
+}

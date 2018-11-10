@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rock'n Bananas</title>
+    <meta name="robots" content="nofollow" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+
+<body>
+    <div id="screen">
+
+        <div id="game">
+            <div id="game_background"></div>
+            <div id="game_elements">
+                <div id="banan1" class="type2 position1"></div>
+                <div id="stone0" class="stone pos0">
+                    <div class="stone_sprite"></div>
+                </div>
+                <div id="stone1" class="stone pos1">
+                    <div class="stone_sprite"></div>
+                </div>
+                <div id="stone2" class="stone pos2">
+                    <div class="stone_sprite"></div>
+                </div>
+                <div id="stone3" class="stone pos5">
+                    <div class="stone_sprite"></div>
+                </div>
+                <div id="stone4" class="stone pos3">
+                    <div class="stone_sprite"></div>
+                </div>
+            </div>
+
+            <div id="game_ui">
+                <div id="exit"></div>
+                <div id="points">
+                    <span class="#harPoints">Score:</span>
+                    <span class="antal">0</span>
+                </div>
+                <div id="energy">
+                    <div id="bananLl1" class="banan"></div>
+                    <div id="bananLl2" class="banan"></div>
+                    <div id="bananLl3" class="banan"></div>
+                </div>
+                <div id="timer">
+                    Time:
+                    <div id="tid">0</div>
+
+                </div>
+            </div>
+        </div>
+        <div id="start" class="hide">
+            <div id="play"></div>
+        </div>
+        <div id="gameover" class="hide">
+            <div id="newGame"></div>
+            <div id="GameOverSign"></div>
+        </div>
+        <div id="levelcomplete" class="hide">
+            <div id="playAgain"></div>
+            <div id="YouRockSign"></div>
+        </div>
+        <div id="settings"></div>
+
+        <div id="settings_screen" class="hide">
+            <!--           <h1>Settings</h1>-->
+            <div id="setting_effekt_sound">
+                <h1>Effekter</h1>
+                <div id="sfx" class="on">
+                    <div id="sfx_sprite"></div>
+                </div>
+            </div>
+            <div id="setting_music">
+                <h1>Musik</h1>
+                <div id="music" class="on">
+                    <div id="music_sprite"></div>
+                </div>
+
+            </div>
+            <div id="setting_close">
+
+
+            </div>
+        </div>
+
+    </div>
+    <audio id="musik">
+        <source src="lyde/ES_Smitten_DylanSitts.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="gameOverMusic">
+        <source src="lyde/ES_AdventuresInIndia_Merlean.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="levelCompleteMusik">
+        <source src="lyde/ES_WestAfricanStories.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="plukA">
+        <source src="lyde/avav.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="plukB">
+        <source src="lyde/20181105-093250.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="falder">
+        <source src="lyde/falder.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
