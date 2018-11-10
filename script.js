@@ -19,6 +19,7 @@ function sidenVises() {
 
 function showStart() {
     console.log("showStart");
+    document.querySelector("#game").classList.remove("blur");
     document.querySelector("#start").classList.remove("hide");
     document.querySelector("#start").classList.add("show");
     document.querySelector("#play").classList.add("pulse");
@@ -28,6 +29,11 @@ function showStart() {
     document.querySelector("#setting_close").addEventListener("click", showSettings);
     document.querySelector("#setting_effekt_sound").addEventListener("click", toggleSounds);
     document.querySelector("#setting_music").addEventListener("click", toggleMusic);
+    //Fjern gameover og lavelC
+    document.querySelector("#gameover").classList.add("hide");
+    document.querySelector("#levelcomplete").classList.add("hide");
+    document.querySelector("#levelCompleteMusik").pause();
+    document.querySelector("#gameOverMusic").pause();
     document.querySelector("#play").addEventListener("click", hideStart);
 
 }
@@ -257,6 +263,8 @@ function gameOver() {
     //    her skifter musikken
     document.querySelector("#musik").pause();
     document.querySelector("#gameOverMusic").play();
+    document.querySelector("#tid").classList.add("hide");
+    document.querySelector("#newGame").addEventListener("click", showStart);
 
     //document.querySelector("#newGame").addEventListener("click", genStart);
 
@@ -271,14 +279,19 @@ function levelcomplete() {
     document.querySelector("#playAgain").classList.add("pulse");
     document.querySelector("#YouRockSign").classList.add("faded_out");
     document.querySelector("#musik").pause();
-
+    //    her skifter musikken
     document.querySelector("#levelCompleteMusik").play();
+    document.querySelector("#tid").classList.add("hide");
+    document.querySelector("#playAgain").addEventListener("click", showStart);
     /*document.querySelector("#playAgain").addEventListener("click", hideStart);*/
 
 }
 
 /*function genStart() {
     console.log("funktionen genstart");
+    document.querySelector("#tid").classList.add("hide");
+    document.querySelector("#tid").removeEventListener("animationend", timeLeft);
+    document.querySelector("#newGame").addEventListener("click", sidenVises);
 
     document.querySelector("#newGame").removeEventListener("click", genStart);
     document.querySelector("#newGame").classList.remove("spil_igen");
