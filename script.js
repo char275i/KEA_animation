@@ -30,10 +30,6 @@ function showStart() {
     document.querySelector("#setting_effekt_sound").addEventListener("click", toggleSounds);
     document.querySelector("#setting_music").addEventListener("click", toggleMusic);
     //Fjern gameover og lavelC
-    document.querySelector("#gameover").classList.add("hide");
-    document.querySelector("#levelcomplete").classList.add("hide");
-    document.querySelector("#levelCompleteMusik").pause();
-    document.querySelector("#gameOverMusic").pause();
     document.querySelector("#play").addEventListener("click", hideStart);
 
 }
@@ -50,6 +46,20 @@ function startGame() {
     console.log("startGame");
     document.querySelector("#start").classList.add("hide");
     document.querySelector("#start").classList.remove("show");
+    tidenGaar();
+    //skul gameOver
+    document.querySelector("#gameover").classList.add("hide");
+    document.querySelector("#gameover").classList.remove("show");
+
+    //skjul levelComplete
+    document.querySelector("#levelcomplete").classList.add("hide");
+    document.querySelector("#levelcomplete").classList.remove("show");
+    //stone_sprite
+    document.querySelector("#stone_sprite").classList.add("silly");
+
+
+    // Vis spilskærm
+    document.querySelector("#game").classList.add("show");
 
     // tilføj falling på stone0,1,2,3
     document.querySelector("#stone0").classList.add("falling");
@@ -68,23 +78,34 @@ function startGame() {
     document.querySelector("#banan1").addEventListener("click", clickBananas);
     document.querySelector("#start").classList.add("titel_side");
     tidenGaar();
+    // genstart falling på stone0,1,2,3
+    document.querySelector("#stone0").addEventListener("animationiteration", genstartStone);
+    document.querySelector("#stone1").addEventListener("animationiteration", genstartStone);
+    document.querySelector("#stone2").addEventListener("animationiteration", genstartStone);
+    document.querySelector("#stone3").addEventListener("animationiteration", genstartStone);
+    document.querySelector("#stone4").addEventListener("animationiteration", genstartStone);
+}
+
+function genstartStone() {
+    console.log(this);
+    console.log("genstart stone");
+
+    this.classList.remove("hide");
 }
 
 function tidenGaar() {
-    console.log("funktionen tidenGaar");
-
-    timeLeft--;
-    console.log(timeLeft);
+    console.log("timeLeft" + timeLeft);
+    document.querySelector("#tid").innerHTML = timeLeft;
 
     if (timeLeft > 0) {
+        timeLeft--;
+
         setTimeout(tidenGaar, 1000);
     } else {
-        gameOver();
+        console.log("Nu er timeLeft = 0");
+        gameStatus();
     }
-
-    document.querySelector("#tid").textContent = timeLeft;
 }
-
 
 function clickStone() {
     console.log("clickStone");
@@ -127,6 +148,13 @@ function clickBanan() {
     this.addEventListener("animationend", nyBanan);
 
     gameStatus();
+}
+
+function nyBanan() {
+    console.log("nyBanan");
+    this.className = "";
+    this.classList.add("type" + Math.floor((Math.random() * 2) + 1));
+    this.classList.add("position" + Math.floor((Math.random() * 10) + 1));
 }
 
 function clickBananas() {
@@ -235,19 +263,11 @@ function musicOn() {
     document.querySelector("#musik").play();
 }
 
-
-function nyBanan() {
-    console.log("nyBanan");
-    this.className = "";
-    this.classList.add("type" + Math.floor((Math.random() * 2) + 1));
-    this.classList.add("position" + Math.floor((Math.random() * 10) + 1));
-}
-
 function gameStatus() {
     if (liv == 0) {
         gameOver();
     }
-    if (points >= 8) {
+    if (points >= 10) {
         levelcomplete();
     }
 }
@@ -263,10 +283,16 @@ function gameOver() {
     //    her skifter musikken
     document.querySelector("#musik").pause();
     document.querySelector("#gameOverMusic").play();
-    document.querySelector("#tid").classList.add("hide");
-    document.querySelector("#newGame").addEventListener("click", showStart);
+    //document.querySelector("#tidenGaar").addEventListener("animationen", timeLeft);
+    //remove falling
+    document.querySelector("#stone0").classList.remove("falling");
+    document.querySelector("#stone1").classList.remove("falling");
+    document.querySelector("#stone2").classList.remove("falling");
+    document.querySelector("#stone3").classList.remove("falling");
+    document.querySelector("#stone4").classList.remove("falling");
 
-    //document.querySelector("#newGame").addEventListener("click", genStart);
+    //
+    document.querySelector("#newGame").addEventListener("click", genStartFc);
 
 }
 
@@ -278,13 +304,24 @@ function levelcomplete() {
     document.querySelector("#playAgain").classList.add("active");
     document.querySelector("#playAgain").classList.add("pulse");
     document.querySelector("#YouRockSign").classList.add("faded_out");
+    //remove falling
+    document.querySelector("#stone0").classList.remove("falling");
+    document.querySelector("#stone1").classList.remove("falling");
+    document.querySelector("#stone2").classList.remove("falling");
+    document.querySelector("#stone3").classList.remove("falling");
+    document.querySelector("#stone4").classList.remove("falling");
     document.querySelector("#musik").pause();
     //    her skifter musikken
     document.querySelector("#levelCompleteMusik").play();
     document.querySelector("#tid").classList.add("hide");
-    document.querySelector("#playAgain").addEventListener("click", showStart);
+    document.querySelector("#playAgain").addEventListener("click", genStartFc);
     /*document.querySelector("#playAgain").addEventListener("click", hideStart);*/
 
+}
+
+function genStartFc() {
+    console.log("replay");
+    document.location.href = "";
 }
 
 /*function genStart() {

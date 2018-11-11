@@ -473,7 +473,7 @@ body {
 
 .faded_out {
     animation-name: fadeout_kf;
-    animation-duration: 9.5s;
+    animation-duration: 7.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -680,4 +680,39 @@ body {
 .position10 {
     left: 71vw;
     top: 20vw;
+}
+/* Silly stone*/
+#stone_sprite {
+    background-size: 500% 100%;
+    width: 7.4vw;
+    height: 5vw;
+    background-image: url(scene/stone_sprite.svg);
+    position: absolute;
+    z-index: 1;
+    left: 68vw;
+    top: 33vw;
+}
+.silly {
+    /*kalder på animationen*/
+    animation-name: silly_kf;
+    animation-duration: 0.9s;
+    /*den skal kun ske en gang */
+    animation-iteration-count: infinite;
+    /*delay*/
+    animation-delay: 9s;
+    /*Den skal blive i hver ende*/
+    animation-fill-mode: both;
+    /*Hvor mange steps er der, man tæller ikke det første med*/
+    animation-timing-function: steps(4);
+    animation-direction: alternate;
+}
+
+@keyframes silly_kf {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -400% 0;
+    }
 }
