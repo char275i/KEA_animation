@@ -684,35 +684,30 @@ body {
 /* Silly stone*/
 #stone_sprite {
     background-size: 500% 100%;
-    width: 7.4vw;
-    height: 5vw;
+    height: 8vw;
     background-image: url(scene/stone_sprite.svg);
     position: absolute;
     z-index: 1;
-    left: 68vw;
-    top: 33vw;
+    left: 1vw;
+    bottom: 3vw;
 }
 .silly {
     /*kalder på animationen*/
     animation-name: silly_kf;
-    animation-duration: 0.9s;
+    animation-duration: 1.2s;
     /*den skal kun ske en gang */
     animation-iteration-count: infinite;
     /*delay*/
-    animation-delay: 9s;
     /*Den skal blive i hver ende*/
-    animation-fill-mode: both;
     /*Hvor mange steps er der, man tæller ikke det første med*/
     animation-timing-function: steps(4);
     animation-direction: alternate;
 }
-
 @keyframes silly_kf {
-    0% {
-        background-position: 0 0;
-    }
-
-    100% {
-        background-position: -400% 0;
-    }
+    from {bottom: 0px;}
+    25%  {bottom: 100px; left: 10px;}
+    50%  {top: 200px; left: 40px;}
+    75%  {top: 300px; left: 60px;}
+    to {bottom: 200px; left: 20px;}
 }
+

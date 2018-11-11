@@ -95,16 +95,17 @@ function genstartStone() {
 
 function tidenGaar() {
     console.log("timeLeft" + timeLeft);
-    document.querySelector("#tid").innerHTML = timeLeft;
+
+    timeLeft--;
+    console.log(timeLeft);
 
     if (timeLeft > 0) {
-        timeLeft--;
-
         setTimeout(tidenGaar, 1000);
     } else {
-        console.log("Nu er timeLeft = 0");
-        gameStatus();
+        gameOver();
     }
+
+    document.querySelector("#tid").textContent = timeLeft;
 }
 
 function clickStone() {
